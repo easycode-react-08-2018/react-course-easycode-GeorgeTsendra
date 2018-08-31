@@ -35,60 +35,122 @@ const users = [
 
 const mountNode = document.getElementById("app");
 
-const usersBlocks = users.map((user ,index, arr) => {
 
-  let tdHeadDate = React.createElement("td", null, "Дата рождения")
-  let tdContentDate = React.createElement("td", null, user.birthdate)
-  let allDate = []
-      allDate.push(tdContentDate)
-      allDate.push(tdHeadDate)
-let trDate = React.createElement("tr", null, {allDate})
+let renderUsers = arr => {
 
+let usersBlocks = arr.map((user ,index, arr) => {
 
-  let tdHeadGender = React.createElement("td", null, "Пол")
-  let tdContentGender = React.createElement("td", null, user.gender)
-  let allGender = []
-      allGender.push(tdHeadGender)
-      allGender.push(tdContentGender)
-let trGender = React.createElement("tr", null, {allGender})
+  return (
 
-  let tdHeadAdress = React.createElement("td", null, "Адрес")
-  let tdContentAdress = React.createElement("td", null, user.adress)
-  let allAdress = []
-      allAdress.push(tdHeadAdress)
-      allAdress.push(tdContentAdress)
-let trAdress = React.createElement("tr", null, {allAdress})
+    React.createElement(
+  "div",
+  { "class": "panel panel-info" },
+  React.createElement(
+    "div",
+    { "class": "panel-heading" },
+    React.createElement(
+      "h3",
+      { "class": "panel-title" },
+      "USER FULL NAME !"
+    )
+  ),
+  React.createElement(
+    "div",
+    { "class": "panel-body" },
+    React.createElement(
+      "div",
+      { "class": "row" },
+      React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "div",
+          { "class": "col-md-3 col-lg-3 ", align: "center" },
+          React.createElement("img", { src: "http://psdexport.com/storage/avatars/default.png", "class": "pull-left" })
+        ),
+        React.createElement(
+          "div",
+          { "class": " col-md-9 col-lg-9" },
+          React.createElement(
+            "table",
+            { "class": "table table-user-information" },
+            React.createElement(
+              "tbody",
+              null,
+              React.createElement(
+                "tr",
+                null,
+                React.createElement(
+                  "td",
+                  null,
+                  "\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F"
+                ),
+                React.createElement(
+                  "td",
+                  null,
+                  "24.10.2016"
+                )
+              ),
+              React.createElement(
+                "tr",
+                null,
+                React.createElement(
+                  "td",
+                  null,
+                  "\u041F\u043E\u043B"
+                ),
+                React.createElement(
+                  "td",
+                  null,
+                  "MALE"
+                )
+              ),
+              React.createElement(
+                "tr",
+                null,
+                React.createElement(
+                  "td",
+                  null,
+                  "\u0410\u0434\u0440\u0435\u0441"
+                ),
+                React.createElement(
+                  "td",
+                  null,
+                  "GOOGLE STREET"
+                )
+              ),
+              React.createElement(
+                "tr",
+                null,
+                React.createElement(
+                  "td",
+                  null,
+                  "Email"
+                ),
+                React.createElement(
+                  "td",
+                  null,
+                  React.createElement(
+                    "a",
+                    { href: "#" },
+                    "EMAIL"
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+  )
 
-  let tdHeadEmail = React.createElement("td", null, "Email")
-  let tdContentEmail = React.createElement("td", null, user.email)
-  let allEmail = []
-      allEmail.push(tdHeadEmail)
-      allEmail.push(tdContentEmail)
-let trEmail = React.createElement("tr", null, {allEmail})
-
-let tbody = React.createElement("tbody", null, trEmail)
-let table = React.createElement("table", {className: "table table-user-information"}, tbody)
-let divFirstBottom = React.createElement("div", {className: "col-md-9 col-lg-9"}, table)
-
-let img = React.createElement("img", {className: "pull-left",src:"http://psdexport.com/storage/avatars/default.png"}, "")
-
-let divFirstTop = React.createElement("div", {className:"col-md-3 col-lg-3",align: "center"}, img)
-let divFirst = [];
-    divFirst.push(divFirstTop)
-    divFirst.push(divFirstBottom)
-let justDiv = React.createElement("div", null, {divFirst})
-let divRow = React.createElement("div", {className: "row"}, justDiv)
-let divPanelBody = React.createElement("div", {className: "panel-body"}, divRow)
-let h3Head = React.createElement("h3", {className:"panel-title"}, user.fullName)
-let divPanelHead = React.createElement("div", {className:"panel-heading"}, h3Head)
-let divPanel = []
-    divPanel.push(divPanelHead)
-    divPanel.push(divPanelBody)
-let panelInfo = React.createElement("div", {className:"panel panel-info"}, {divPanel})
-
-console.log(panelInfo);
-return {panelInfo}
+  )
 })
-console.log(usersBlocks);
+return usersBlocks;
+}
 
-ReactDOM.render( React.createElement("div", null, usersBlocks), mountNode )
+  ReactDOM.render(<renderUsers arr={users}/>, mountNode )
+
+
+// try 3
